@@ -24,9 +24,20 @@ function App() {
   const modalSeen = localStorage.getItem('modalSeen');
   const [modalOpen, setModalOpen] = useState(modalSeen == 'true' ? false : true)
 
+  //This makes the site jump over when the scrollbar disappears
+  //Looking for a better solution to disable scrolling while modal is open
+  // useEffect(() => {
+  //   if (modalOpen) {
+  //     document.body.style.overflow = 'hidden';
+  //   }
+  //   else {
+  //     document.body.style.overflow = 'auto';
+  //   }
+  // }, [modalOpen]);
+
   return (
     <>
-      <NewUserModal modalOpen={modalOpen} modalSetOpenFunction={setModalOpen} />
+      <NewUserModal open={modalOpen} onClose={setModalOpen} />
       <NewUserModalOpenIcon modalSetOpenFunction={setModalOpen} />
       <Context.Provider value={{d4, setD4, d6, setD6, d8, setD8, d10, setD10, d12, setD12, take2, setTake2, totalDice, maxDice}}>
         <DicePool />
