@@ -16,7 +16,7 @@ function NewUserModal(props: Props) {
     return (
         <>
             <div onClick={() => { setCookie(); onClose();}} className={`fixed inset-0 flex justify-center items-center transition-colors z-10 ${open ? "visible bg-black/50" : "invisible"}`}>
-                <div onClick={(e) => e.stopPropagation} className={`w-4/5 sm:w-1/2 h-4/5 bg-neutral-800 border-2 border-solid border-neutral-300 rounded-xl shadow transition-all ${open ? "scale-100 opacity-100" : "scale-125 opacity-0"}`}>
+                <div onClick={(e) => e.stopPropagation} className={`w-4/5 sm:w-1/2 h-4/5 bg-neutral-800 border-2 border-solid border-neutral-300 rounded-xl shadow transition-all ${open ? "opacity-100" : "opacity-0"}`}>
                     <div className='h-4/5 overflow-y-auto text-left pt-5 px-5'>
                         <h1 className='mb-4 text-center text-lg'>Cortex Plus Dice Pool Visualizer</h1>
                         <p className='mb-4'>Cortex Plus is the underpinning of multiple tabletop systems, including <i>The Firefly Role-Playing Game</i> and <i>Marvel Heroic Roleplaying</i>.</p>
