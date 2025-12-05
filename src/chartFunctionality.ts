@@ -1,10 +1,19 @@
-//for performance reasons, iterate over the array only once
-export function take2Dice(arr: number[]) {
+interface diceResult {
+	result: number,
+	effectDie: number,
+	opportunities: number
+}
+
+export function take2Dice(arr: number[]): diceResult {
 	var takenDie1 = 0;
 	var takenDie2 = 0;
+	var opportunities = 0;
 	
 	for (let i = 0; i < arr.length; i++) {
-		if (arr[i] == 1) continue; //opps will come in a future version
+		if (arr[i] == 1) {
+			opportunities += 1;
+			continue;
+		}
 		if (arr[i] > takenDie1) {
 			takenDie2 = takenDie1;
 			takenDie1 = arr[i];
@@ -14,17 +23,21 @@ export function take2Dice(arr: number[]) {
 		}
 	}
 	
-	return takenDie1 + takenDie2
+	//effect dice will come in a future version
+	return { result: takenDie1 + takenDie2, effectDie: 0, opportunities: opportunities };
 }
 
-//for performance reasons, iterate over the array only once
 export function take3Dice(arr: number[]) {
 	var takenDie1 = 0;
 	var takenDie2 = 0;
 	var takenDie3 = 0;
+	var opportunities = 0;
 	
 	for (let i = 0; i < arr.length; i++) {
-		if (arr[i] == 1) continue;
+		if (arr[i] == 1) {
+			opportunities += 1;
+			continue;
+		}
 		if (arr[i] > takenDie1) {
 			takenDie3 = takenDie2;
 			takenDie2 = takenDie1;
@@ -38,8 +51,8 @@ export function take3Dice(arr: number[]) {
 			takenDie3 = arr[i];
 		}
 	}
-	
-	return takenDie1 + takenDie2 + takenDie3;
+
+	return { result: takenDie1 + takenDie2 + takenDie3, effectDie: 0, opportunities: opportunities };
 }
 
 //represent the probability map as an array of arrays
